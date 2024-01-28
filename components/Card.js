@@ -11,7 +11,6 @@ export default function Card({ children }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.55,
     justifyContent: 'center',
     backgroundColor: 'dimgray',
     borderRadius: 10,

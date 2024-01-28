@@ -69,7 +69,7 @@ export default function Input({ name, setName, number, setNumber, setModalVisibl
       <TextInput style={styles.input} value={name} onChangeText={handleNameChange}/>
       <Error showError={showNameError} keyword='name'/>
       <Text style={styles.text}>Enter a Number</Text>
-      <TextInput style={styles.input} value={number} onChangeText={handleNumberChange} keyboardType='numeric'/>
+      <TextInput style={styles.input} value={number} onChangeText={handleNumberChange} keyboardType='numeric' maxLength={4}/>
       <Error showError={showNumberError} keyword='number'/>
       <View style={styles.checkboxContainer}>
         <Checkbox
@@ -89,7 +89,7 @@ export default function Input({ name, setName, number, setNumber, setModalVisibl
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    minHeight: 350, // ensure input card has enough space
     justifyContent: 'space-evenly',
   },
   text: {
