@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import React, { useEffect, useState } from 'react'
 import Error from './Error'
+import Color from './Color'
 
 export default function Input({ name, setName, number, setNumber, setModalVisible, isSelected, setSelection,
   isValidName, setIsValidName, isValidNumber, setIsValidNumber }) {
@@ -77,7 +78,7 @@ export default function Input({ name, setName, number, setNumber, setModalVisibl
         <Text style={styles.caption}>I am not a robot</Text>
       </View>
       <View style={styles.button}>
-        <Button title='Reset' onPress={resetHandler} color='firebrick'/>
+        <Button title='Reset' onPress={resetHandler} color={Color.redButton}/>
         <Button title='Confirm' onPress={confirmHandler} disabled={!isSelected}/>
       </View>
     </View>
@@ -90,18 +91,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   text: {
-    color: 'midnightblue',
+    color: Color.primary,
     fontSize: 16
   },
   caption: {
-    color: 'midnightblue',
+    color: Color.primary,
   },
   input: {
     borderBottomWidth: 2,
-    borderBottomColor: 'midnightblue',
+    borderBottomColor: Color.primary,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'midnightblue',
+    color: Color.primary,
     padding: 3
   },
   checkboxContainer: {

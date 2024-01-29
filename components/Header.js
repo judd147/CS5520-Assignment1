@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, SafeAreaView } from 'react-native'
 import React from 'react'
+import Color from './Color'
 
 export default function Header({ text }) {
   return (
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 30 // for Android
   },
   text: {
-    color: 'midnightblue',
+    color: Color.primary,
     fontSize: 20,
   }
 })

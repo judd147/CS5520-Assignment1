@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import Background from './components/Background';
 import StartScreen from './screens/StartScreen';
@@ -9,7 +9,7 @@ import FinalScreen from './screens/FinalScreen';
 export default function App() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [answer, setAnswer] = useState(1026); // FIXME make me random
+  const [answer, setAnswer] = useState(0);
   const [isSelected, setSelection] = useState(false)
   const [isValidName, setIsValidName] = useState(false)
   const [isValidNumber, setIsValidNumber] = useState(false)
@@ -19,27 +19,37 @@ export default function App() {
   const [showFinalScreen, setShowFinalScreen] = useState(false);
 
   const restart = () => {
-    // setAnswer()
-    setName('')
-    setNumber('')
-    setNumGuess(3)
-    setSelection(false)
-    setIsValidName(false)
-    setIsValidNumber(false)
-    setShowFinalScreen(false)
+    const randomInt = getRandomInt(1020, 1029);
+    setAnswer(randomInt);
+    setName('');
+    setNumber('');
+    setNumGuess(3);
+    setSelection(false);
+    setIsValidName(false);
+    setIsValidNumber(false);
+    setShowFinalScreen(false);
   }
-  // generate a random number
-  // setAnswer()
+
+  const getRandomInt = (min, max) => {
+    const randomInt = Math.floor(Math.random() * (max - min + 1) + min);
+    // console.log(randomInt);
+    return randomInt;
+  }
+
+  // generate an initial random number
+  useEffect(() => {
+    setAnswer(getRandomInt(1020, 1029));
+  }, []);
 
   // Game Logic
   // reset tip and number of guesses upon submission
   useEffect(() => {
     if (parseInt(number) > answer && modalVisible) {
-      setTip('Guess lower')
-      setNumGuess(numGuess - 1)
+      setTip('Guess lower');
+      setNumGuess(numGuess - 1);
     } else if (parseInt(number) < answer && modalVisible) {
-      setTip('Guess higher')
-      setNumGuess(numGuess - 1)
+      setTip('Guess higher');
+      setNumGuess(numGuess - 1);
     }
   }, [modalVisible])
 

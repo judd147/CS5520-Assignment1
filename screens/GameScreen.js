@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Modal, Button } from 'react-native'
 import React from 'react'
 import Card from '../components/Card'
 import Background from '../components/Background';
+import Color from '../components/Color'
 
 export default function GameScreen({ modalVisible, setModalVisible, name, number, answer, tip, numGuess, setShowFinalScreen }) {
   const navigateToFinalScreen = () => {
@@ -27,7 +28,7 @@ export default function GameScreen({ modalVisible, setModalVisible, name, number
               <Text style={styles.text}>{
               `Hello ${name}\nYou have chosen ${number}\nThat's not my number!\nYou have no attempts left!`}</Text>
               <View style={styles.button}>
-                <Button title="I'm Done" onPress={navigateToFinalScreen} color={'firebrick'}/>
+                <Button title="I'm Done" onPress={navigateToFinalScreen} color={Color.redButton}/>
               </View>
               <View style={styles.button}>
                 <Button title='Try Again' onPress={() => {setModalVisible(false)}} disabled={true}/>
@@ -38,7 +39,7 @@ export default function GameScreen({ modalVisible, setModalVisible, name, number
               <Text style={styles.text}>{
               `Hello ${name}\nYou have chosen ${number}\nThat's not my number!\n${tip}\nYou have ${numGuess} attempts left!`}</Text>
               <View style={styles.button}>
-                <Button title="I'm Done" onPress={navigateToFinalScreen} color={'firebrick'}/>
+                <Button title="I'm Done" onPress={navigateToFinalScreen} color={Color.redButton}/>
               </View>
               <View style={styles.button}>
                 <Button title='Try Again' onPress={() => {setModalVisible(false)}}/>
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: 'midnightblue',
+    color: Color.primary,
     fontSize: 20,
     textAlign: 'center',
   },

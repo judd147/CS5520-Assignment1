@@ -3,6 +3,7 @@ import React from 'react'
 import Background from '../components/Background'
 import Card from '../components/Card'
 import Header from '../components/Header'
+import Color from '../components/Color'
 
 export default function FinalScreen({ answer, number, restart }) {
   return (
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: 'midnightblue',
+    color: Color.primary,
     fontSize: 20,
     textAlign: 'center',
     padding: 5
