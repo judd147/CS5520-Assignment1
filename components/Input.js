@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Color.primary,
-    fontSize: 16
+    fontSize: 20
   },
   caption: {
     color: Color.primary,
