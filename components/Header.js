@@ -12,10 +12,10 @@ export default function Header({ text }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    padding: 20 // for Android
+    padding: 30 // for Android
   },
   text: {
     color: 'midnightblue',
-    fontSize: 16,
+    fontSize: 20,
   }
 })

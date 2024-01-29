@@ -3,10 +3,8 @@ import Checkbox from 'expo-checkbox'
 import React, { useEffect, useState } from 'react'
 import Error from './Error'
 
-export default function Input({ name, setName, number, setNumber, setModalVisible }) {
-  const [isSelected, setSelection] = useState(false)
-  const [isValidName, setIsValidName] = useState(false)
-  const [isValidNumber, setIsValidNumber] = useState(false)
+export default function Input({ name, setName, number, setNumber, setModalVisible, isSelected, setSelection,
+  isValidName, setIsValidName, isValidNumber, setIsValidNumber }) {
   const [showNameError, setShowNameError] = useState(false)
   const [showNumberError, setShowNumberError] = useState(false)
 
@@ -39,8 +37,8 @@ export default function Input({ name, setName, number, setNumber, setModalVisibl
     setName('')
     setNumber('')
     setSelection(false)
-    setIsValidName(true)
-    setIsValidNumber(true)
+    setIsValidName(false)
+    setIsValidNumber(false)
   }
 
   const confirmHandler = () => {
@@ -56,7 +54,6 @@ export default function Input({ name, setName, number, setNumber, setModalVisibl
     } else {
       setShowNumberError(true)
     }
-
     // navigate to game screen
     if (isValidName && isValidNumber) {
       setModalVisible(true)

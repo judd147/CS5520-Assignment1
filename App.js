@@ -9,15 +9,30 @@ import FinalScreen from './screens/FinalScreen';
 export default function App() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [answer, setAnswer] = useState(1024); // FIXME make me random
+  const [answer, setAnswer] = useState(1026); // FIXME make me random
+  const [isSelected, setSelection] = useState(false)
+  const [isValidName, setIsValidName] = useState(false)
+  const [isValidNumber, setIsValidNumber] = useState(false)
   const [tip, setTip] = useState('')
   const [numGuess, setNumGuess] = useState(3);
   const [modalVisible, setModalVisible] = useState(false);
   const [showFinalScreen, setShowFinalScreen] = useState(false);
 
+  const restart = () => {
+    // setAnswer()
+    setName('')
+    setNumber('')
+    setNumGuess(3)
+    setSelection(false)
+    setIsValidName(false)
+    setIsValidNumber(false)
+    setShowFinalScreen(false)
+  }
+  // generate a random number
+  // setAnswer()
+
   // Game Logic
-  // set tip and number of guesses upon submission
-  // finally check if game is over
+  // reset tip and number of guesses upon submission
   useEffect(() => {
     if (parseInt(number) > answer && modalVisible) {
       setTip('Guess lower')
@@ -32,11 +47,13 @@ export default function App() {
     <Background>
       <StatusBar style="auto" />
       {!showFinalScreen && <StartScreen
-        name={name} setName={setName} number={number} setNumber={setNumber} setModalVisible={setModalVisible}/>}
+        name={name} setName={setName} number={number} setNumber={setNumber} setModalVisible={setModalVisible}
+        isSelected={isSelected} setSelection={setSelection} isValidName={isValidName} setIsValidName={setIsValidName}
+        isValidNumber={isValidNumber} setIsValidNumber={setIsValidNumber}/>}
       {modalVisible && <GameScreen
         setModalVisible={setModalVisible} name={name} number={number} answer={answer}
         tip={tip} numGuess={numGuess} setShowFinalScreen={setShowFinalScreen}/>}
-      {showFinalScreen && <FinalScreen />}
+      {showFinalScreen && <FinalScreen answer={answer} number={number} restart={restart}/>}
     </Background>
   );
 }
